@@ -1,0 +1,16 @@
+.ComponentTypes{
+
+}
+
+.ComponentTypes .CircularProgressbar{
+    width: 40px;
+}
+
+.ComponentTypes .CircularProgressbar-path {
+    stroke: #99f;
+}
+
+.ComponentTypes .line {
+    border-top: solid 1px;
+}
+

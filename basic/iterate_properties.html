@@ -1,0 +1,57 @@
+<html>
+<head>
+
+
+</head>
+<body>
+
+
+
+
+
+<script>
+
+var a = {
+		name:'zhang',
+		getName:function(){ return this.name}
+		};
+
+		
+var B = function(){
+}
+B.prototype = a;
+B.prototype.sex='male';
+var b = new B();
+b.age = 22;
+
+
+
+//with function
+var i;
+var res = '';
+for(i in b){
+	res = res + i + ':' + b[i] +' ';
+}
+document.writeln(res+'</br>');
+
+//without function
+res = '';
+for(i in b){
+	if( typeof b[i] !== 'function'){
+		res = res + i + ':' + b[i] +' ';
+	}
+}
+document.writeln(res+'</br>');
+
+
+//without function and prototype
+res = '';
+for(i in b){
+	if( typeof b[i] !== 'function' && b.hasOwnProperty(i)){
+		res = res + i + ':' + b[i] +' ';
+	}
+}
+document.writeln(res+'</br>');
+</script>
+<body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+
+<script type="text/javascript">
+
+
+	var employees = [{"name":"a"},{"name":"b"},{"name":"c"},{"name":"d"}];
+
+	// arrow function - shorter/no this so that is unnecessary
+	employees.forEach(function(e){console.log(e.name);});
+	employees.forEach(e => console.log(e.name));
+	employees.forEach(e => {console.log(e.name);});
+
+
+	// map
+	var names = employees.map(function(e){return e.name;});
+	var names = employees.map(e => e.name);
+	console.log(names); // a,b,c,d
+
+	// reduce
+	var names1 = names.reduce((e1, e2) => {
+		console.log(e1 + e2); // ab, abc, abcd
+		return e1 + e2;
+	});
+	console.log(names1); // abcd
+
+	// filter
+	var names2 = names.filter(e => {
+		return e !=='a';
+	});
+	console.log(names2); // b,c,d
+
+	// sort
+
+
+
+
+</script>
+</head>
+<body>
+
+<div>
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_2015_support_in_Mozilla
+</div>
+
+
+
+
+</body>
+</html>

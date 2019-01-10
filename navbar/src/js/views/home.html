@@ -1,0 +1,91 @@
+<!--
+ Copyright (c) 2014, 2017, Oracle and/or its affiliates.
+ The Universal Permissive License (UPL), Version 1.0
+ -->
+<div class="" style="padding-bottom:80px;">
+
+    <!-- search bar -->
+    <div class="search_bar">
+        <oj-input-text placeholder="industry/tag/product" style="max-width:100%; "></oj-input-text>
+    </div>
+
+    <!-- slider -->
+    <div>
+        <figure id="silder" class="swipslider" style="">
+            <ul class="sw-slides">
+                <li class="sw-slide">
+                    <img src="css/images/promotion/1.png">
+                </li>
+                <li class="sw-slide">
+                    <img src="css/images/promotion/2.png">
+                </li>
+                <li class="sw-slide">
+                    <img src="css/images/promotion/3.png">
+                </li>
+                <li class="sw-slide">
+                    <img src="css/images/promotion/4.png">
+                </li>
+                <li class="sw-slide">
+                    <img src="css/images/promotion/5.png">
+                </li>
+            </ul>
+        </figure>
+    </div>
+
+    <!-- flowing flex -->
+    <div class="oj-flex" data-bind="foreach: data.industries">
+
+        <div data-bind="if: hot" class="oj-flex-item oj-flex oj-sm-3 oj-md-3 oj-lg-3 oj-xl-3">
+            <div class="oj-flex-item oj-panel myPanel">
+                <div data-bind="click: $parent.go">
+                    <oj-avatar role="img" size="xs" data-bind="attr: {'src': 'css/images/industry/' + icon}"></oj-avatar>
+                </div>
+                <span class="oj-text-xs oj-text-secondary-color" data-bind="text: name"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- promotion belt -->
+    <h3>Promotion1</h3>
+    <div class="oj-flex">
+        <oj-conveyor-belt class="oj-lg-12 oj-md-12 oj-sm-12">
+            <div tabindex="0" class="conveyor-item">
+                <img src="css/images/promotion/p1.png" data-bind="css: smScreen()? '': 'promotion_big'">
+                <h4>title</h4>
+                <p>111</p>
+            </div>
+            <div tabindex="0" class="conveyor-item">
+                <img src="css/images/promotion/p1.png" data-bind="css: smScreen()? '': 'promotion_big'">
+                <h4>title</h4>
+                <p>111</p>
+            </div>
+            <div tabindex="0" class="conveyor-item">
+                <img src="css/images/promotion/p1.png" data-bind="css: smScreen()? '': 'promotion_big'">
+                <h4>title</h4>
+                <p>111</p>
+            </div>
+        </oj-conveyor-belt>
+    </div>
+
+    <h3>Promotion2</h3>
+    <div class="oj-flex">
+        <oj-conveyor-belt class="oj-lg-12 oj-md-12 oj-sm-12">
+            <div tabindex="0" class="conveyor-item">
+                <img src="css/images/promotion/p1.png" data-bind="css: smScreen()? '': 'promotion_big'">
+                <h4>title</h4>
+                <p>111</p>
+            </div>
+            <div tabindex="0" class="conveyor-item">
+                <img src="css/images/promotion/p1.png" data-bind="css: smScreen()? '': 'promotion_big'">
+                <h4>title</h4>
+                <p>111</p>
+            </div>
+            <div tabindex="0" class="conveyor-item">
+                <img src="css/images/promotion/p1.png" data-bind="css: smScreen()? '': 'promotion_big'">
+                <h4>title</h4>
+                <p>111</p>
+            </div>
+        </oj-conveyor-belt>
+    </div>
+
+</div>

@@ -1,0 +1,50 @@
+<!--
+ Copyright (c) 2014, 2017, Oracle and/or its affiliates.
+ The Universal Permissive License (UPL), Version 1.0
+ -->
+<div class="">
+
+    <!-- tool bar -->
+    <div class="tool_bar">
+        <div class="oj-flex-bar">
+            <div class="oj-flex-bar-start">
+                <oj-toolbar>
+                    <oj-button data-bind="click: function(){history.back();}">
+                        <span slot='startIcon' class='oj-fwk-icon-caret-start oj-fwk-icon'></span>
+                    </oj-button>
+                    <span class="title">操作记录</span>
+                </oj-toolbar>
+            </div>
+        </div>
+    </div>
+
+
+    <oj-list-view class="list">
+        <ul>
+            <li class="row" data-bind="click: go.bind($data, 'home')">
+                <div class="oj-flex">
+                    <div class="oj-flex-item oj-sm-10">
+                        <div>积分上链</div>
+                        <div class="oj-text-xs oj-text-secondary-color small">[天猫]</div>
+                        <div class="oj-text-xs oj-text-secondary-color small">2018-04-30 14:20</div>
+                    </div>
+                    <div class="oj-flex-item oj-sm-2 oj-sm-align-self-center ">
+                        <div>2000</div>
+                    </div>
+                </div>
+            </li>
+            <li class="row" data-bind="click: go.bind($data, 'home')">
+                <div class="oj-flex">
+                    <div class="oj-flex-item oj-sm-10">
+                        <div>积分上链</div>
+                        <div class="oj-text-xs oj-text-secondary-color small">[天猫]</div>
+                        <div class="oj-text-xs oj-text-secondary-color small">2018-04-30 14:20</div>
+                    </div>
+                    <div class="oj-flex-item oj-sm-2 oj-sm-align-self-center ">
+                        <div>2000</div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </oj-list-view>
+</div>

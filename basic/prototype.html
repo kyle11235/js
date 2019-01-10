@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!-- saved from url=(0013)about:internet -->
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title></title>
+
+<style type="text/css">
+div
+{
+width:1000px;
+height:600px;
+margin:30px auto;
+border:1px solid orange;
+text-align:center;
+}
+.change
+{
+width:1000px;
+height:600px;
+margin:30px auto;
+border:1px solid blue;
+text-align:center;
+}
+</style>
+
+
+<script type="text/javascript">
+
+    //
+    console.log('1. Object.prototype (toString, hasOwnProperty ...), all things are linked to Object.prototype');
+	console.log(Object.prototype);
+    console.log('');
+
+    //
+    console.log('2. obj.__proto__, obj as plain object，is linked to Object.prototype by __proto__');
+	var obj = {name:'zzzzzz'};
+	console.log(obj.__proto__);
+    console.log('');
+	
+	//
+    console.log('3. Person as function, is linked to Function.prototype by __proto__, Function.prototype is linked to Object.prototype by __proto__');
+    var Person = function(name){
+		this.name = name;
+	};
+    console.log(Person.__proto__.__proto__);
+    console.log('');
+
+    //
+    console.log('4. set value to Object.prototype, you can get it from every object/function, the value will be override value from child object');
+    console.log('Object.prototype.name = \'kyle\'');
+    console.log('Object.prototype.age = 23');
+    Object.prototype.name = 'kyle';
+	Object.prototype.age = 23; 
+	Object.prototype.printName = function(){
+		console.log('Object.prototype.printName, name=' + this.name)
+	};
+    console.log('');
+
+    //
+    console.log('5. obj, the name overrides the name set in Object.prototype');
+    console.log('name:' + obj.name);
+	console.log('age:' + obj.age);
+    console.log('obj.printName() ->');
+	obj.printName();
+    console.log('');
+
+    //
+    console.log('6. Person, this name is the name of Person function');
+	console.log('Person.name:' + Person.name);
+	console.log('Person.age:' + Person.age);
+    console.log('Person.printName() ->');
+	Person.printName();
+    console.log('');
+	
+	
+	
+	//
+    console.log('7. Person as function, also has en empty object \'Person.prototype\' for others to link，when you new Person(),the new object is linked to Person.prototype');
+	console.log('So you would like to set value for all persons, you set it to Person.prototype');
+	Person.prototype.sayHi = function(){
+		console.log('Person.prototype.sayHi, name=' + this.name);  
+	};
+    console.log('new Person(\'kyle 111\')');
+	var person = new Person('kyle 111');
+    console.log('person.sayHi() -> ');
+	person.sayHi();
+
+    console.log('new Person(\'kyle 222\')');
+	var person1 = new Person('kyle 222');
+    console.log('person.sayHi() -> ');
+	person1.sayHi();
+    console.log('');
+
+
+    console.log('8. to inhert, you can use Object.create to create your own prototype ');
+    var Superman = function(name, ability){
+    	this.name = name;
+    	this.ability = ability;
+    };
+
+    console.log('Superman.prototype = Object.create(Person.prototype)');
+    console.log('Superman.prototype.constructor = Superman');
+    Superman.prototype = Object.create(Person.prototype);
+	Superman.prototype.constructor = Superman; // this is necessary
+
+    console.log('new Superman(\'superman\')');
+    var superman = new Superman('superman');
+    console.log('superman.sayHi() ->');
+	superman.sayHi();
+    console.log('');
+
+</script>
+</head>
+<body>
+
+<div>
+please check console
+</div>
+
+
+
+
+</body>
+</html>

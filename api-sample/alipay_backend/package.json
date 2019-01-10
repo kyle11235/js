@@ -1,0 +1,9 @@
+{
+  "name": "app",
+  "dependencies": {
+    "async-request": "^1.2.0",
+    "body-parser": "^1.17.1",
+    "express": "^4.14.0",
+    "request": "^2.79.0"
+  }
+}

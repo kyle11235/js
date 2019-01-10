@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!-- saved from url=(0013)about:internet -->
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title></title>
+
+<style type="text/css">
+div
+{
+width:1000px;
+height:600px;
+margin:30px auto;
+border:1px solid orange;
+text-align:center;
+}
+.change
+{
+width:1000px;
+height:600px;
+margin:30px auto;
+border:1px solid blue;
+text-align:center;
+}
+</style>
+
+
+<script type="text/javascript">
+
+var Person = function (city) {
+	this.name = "zhang";
+	this.age = 23;
+	this.city = city;
+	this.hello = function () {
+		return "name:"+this.name+" ,age:"+this.age +" ,city:"+this.city;
+	}
+}
+
+	
+var change = function () {
+
+	var person1 = new Person("shenzhen");
+	person1.age = 26;
+	
+	var person2 = new Person("beijing");
+	
+	document.getElementById("r").innerHTML=person1.hello()+"</br>"+person2.hello();
+	
+	
+}
+
+
+</script>
+</head>
+<body>
+
+<div id="r" onclick="change()">
+hello
+</div>
+
+
+
+
+</body>
+</html>

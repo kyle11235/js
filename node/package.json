@@ -1,0 +1,21 @@
+{
+  "name": "auth",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node index.js",
+    "build": "zip -r build/auth.zip node_modules data service utils *.js"
+  },
+  "dependencies": {
+    "async-request": "^1.2.0",
+    "bluebird": "^3.4.6",
+    "body-parser": "^1.17.1",
+    "cors": "^2.8.4",
+    "express": "^4.14.0",
+    "fs": "0.0.1-security",
+    "moment": "^2.16.0",
+    "morgan": "^1.9.0",
+    "mysql": "^2.15.0",
+    "request": "^2.79.0"
+  }
+}

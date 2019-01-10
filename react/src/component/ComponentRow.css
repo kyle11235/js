@@ -1,0 +1,15 @@
+.ComponentRow {
+
+}
+
+.ComponentRow .name{
+    font-weight: 600;
+}
+
+.ComponentRow .pipeline{
+    margin-left:10px;
+}
+
+.ComponentRow .using{
+    margin-left:10px;
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<!--1.involve angular-->
+<script src="./angular.min.js"></script>
+</head>
+<body>
+
+
+<div>
+	<a href="http://www.runoob.com/angularjs/angularjs-tutorial.html" target="_blank">http://www.runoob.com/angularjs/angularjs-tutorial.html</a>
+</div>
+
+<!--2.add ng-app-->
+<!--3.you can set value by ng-init-->
+<div ng-app="myApp" ng-init="count=100;city='sz';myarr=['111','222','333'];" ng-controller="myCtrl">
+
+	<!--4.you can set value by ng-model-->
+	<div>
+		first name: <input type="text" ng-model="person.firstName"><br>
+		last name: <input type="text" ng-model="person.lastName"><br>
+	</div>
+
+	<!--5.use {{}} to output values-->
+	<div>
+		full name: {{person.firstName + " " + person.lastName}}
+	</div>
+
+	<!--6.or you ng-bind to output values，html has to be paired-->
+	<div>
+		count=<span ng-bind="count"></span>, city={{city}}
+	</div>
+		
+
+	<!--7.use repeat command-->
+	<div>
+		<ul>
+		<li ng-repeat="x in myarr">
+		  {{ x }}
+		</li>
+		</ul>
+	</div>
+	
+	<div>
+		<button ng-click='submit()'>submit</button>{{result}}
+	</div>
+	
+	<my-cmd></my-cmd>
+	
+	<div>
+		<button ng-click="myVar = !myVar">hide/show</button>
+		<p ng-show="count > 0">I am visible</p>
+		<p ng-show="myVar">ha ha ha</p>
+	</div>
+	
+
+	
+	
+	<div>
+		{{myHttpData}}
+	</div>
+	
+	
+	
+</div>
+
+<script>
+// 8.controller <-> model(scope) <-> view
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $location, $http) {
+   
+   var person = {};
+	person.firstName = "John";
+	person.lastName = "Doe"
+	$scope.person = person;
+	
+	// click event
+	$scope.submit = function() {
+        $scope.result = person;
+    };
+	
+	// use location
+	console.log('url=' + $location.absUrl());
+	
+	// use http
+	$http({
+        method: 'GET',
+        url: 'https://api.github.com/users/oracle/repos'
+    }).then(function successCallback(response) {
+            $scope.myHttpData = response.data;
+        }, function errorCallback(response) {
+            //
+    });
+
+});
+
+// 9.directive
+app.directive("myCmd", function() {
+    return {
+        template : "<h3>directive</h3>"
+    };
+});
+</script>
+
+</body>
+</html>

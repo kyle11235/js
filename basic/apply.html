@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!-- saved from url=(0013)about:internet -->
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title></title>
+
+<style type="text/css">
+div
+{
+width:1000px;
+height:600px;
+margin:30px auto;
+border:1px solid orange;
+text-align:center;
+}
+.change
+{
+width:1000px;
+height:600px;
+margin:30px auto;
+border:1px solid blue;
+text-align:center;
+}
+</style>
+
+
+<script type="text/javascript">
+
+	
+var hello = function () {
+	document.getElementById("r").innerHTML=arguments[0]+' , '+arguments[1]+' '+this.name+"</br>";
+}
+
+var clickFunc = function(){
+	this.name = 'zhang';
+	//apply will pass this and an array to hello method
+	hello.apply(this, ['hello','dear']);
+
+}
+
+</script>
+</head>
+<body>
+
+<div id="r" onclick="clickFunc()">
+hello
+</div>
+
+
+
+
+</body>
+</html>

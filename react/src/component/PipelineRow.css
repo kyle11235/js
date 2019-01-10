@@ -1,0 +1,51 @@
+.PipelineRow {
+     border-bottom: 1px #e1e4e8 solid;
+     padding: 10px 0px;
+     min-height: 100px;
+ }
+
+.PipelineRow .title{
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+.PipelineRow .name{
+    font-weight: 600;
+}
+
+.PipelineRow .desc{
+    font-size: 14px;
+    color: #586069;
+    margin-bottom: 8px;
+}
+
+.PipelineRow .official{
+    background-color: #ffac45;
+    margin-right: 5px;
+
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+
+.PipelineRow .live{
+    background-color: #5cb85c;
+    margin-right: 5px;
+
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}

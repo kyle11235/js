@@ -1,0 +1,67 @@
+<html>
+<head>
+
+
+</head>
+<body>
+
+
+
+
+
+<script>
+
+var SMP = SMP || {};
+
+SMP.m1 = (function(){
+	
+	var name = 'cobus';
+	return {
+		
+		getName:function(){
+			return name;//do not use this
+		}
+	};
+}());
+
+
+document.writeln(SMP.m1.getName());
+</script>
+
+<script>
+
+var SMP = SMP || {};
+
+SMP.m2 = (function(){
+	
+	return {
+		name:'zhang',
+		getName:function(){
+			return this.name;//use this
+		}
+	};
+}());
+
+
+document.writeln(SMP.m2.getName());
+</script>
+
+<script>
+
+var SMP = SMP || {};
+
+SMP.m3 = (function(){
+	var name ='peng';
+	var getName = function(){
+		return name;//do not use this
+	}
+	return {
+		getName:getName
+	};
+}());
+
+
+document.writeln(SMP.m3.getName());
+</script>
+<body>
+</html>
