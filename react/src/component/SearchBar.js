@@ -24,6 +24,7 @@ class SearchBar extends Component {
         this.props.handleClear();
     }
 
+
     render() {
         // set default value to ensure it is controlled without unexpected value
         const data = this.props.data ? this.props.data : {
@@ -49,7 +50,7 @@ class SearchBar extends Component {
         }
 
         return (
-            <form className="SearchBar">
+            <div className="SearchBar">
                 {/* 1. the best way to customize your own component is use className to take plain css class of course */}
                 {/* 2. the best way to customize 3th party component slightly is camel inline style, it ensures order */}
                 {/* 3. Mui - use MuiThemeProvider and createMuiTheme for a global color theme */}
@@ -59,7 +60,6 @@ class SearchBar extends Component {
                     name="q"
                     value={data.q}
                     onChange={this.handleChange}
-                    onKeyDown={this.handleKeyDown}
                     margin="normal"
                     placeholder="Search"
                 />
@@ -71,7 +71,7 @@ class SearchBar extends Component {
                     onClick={this.handleClear}>
                     Clear
                 </Button>
-            </form>
+            </div>
         );
     }
 }
