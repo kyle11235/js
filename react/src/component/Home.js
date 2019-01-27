@@ -60,6 +60,7 @@ class Home extends Component {
     }
 
     handleChange = (name, value) => {
+        console.log('handleChange');
         console.log(name, value);
 
         const query = queryString.parse(this.props.location.search);
@@ -68,9 +69,9 @@ class Home extends Component {
         if ('q' === name) {
             query.q = value;
             // 1.setState handles simple situation
-            // 2.immutability-helper can handle nested value with preState, this.state is readonly
-            // 3.or you can shallow copy with Object.assign(target, source);
-            this.setState((preState) => update(preState, {
+            // 2.deep copies are expensive
+            // 3.update/immutability-helper updates part of object/currentState, update returns updated state to this.setState
+            this.setState((currentState) => update(currentState, {
                 searchBar: {q: {$set: value}}
             }));
         } else if (searchBar.tags) {
@@ -124,12 +125,23 @@ class Home extends Component {
     search() {
         this.setState({completed: 20});
 
-        // ensure state is updated whenever you use it
+        // ensure state is updated whenever you use it by involving previous state 
         // update state in a callback or return state directly
+        /*
+            // Correct
+            this.setState(function(currentState, props) {
+                return {
+                    counter: currentState.counter + props.increment
+                };
+            });
+        */
         let pipelines = null;
-        this.setState((state) => {
+        this.setState((currentState) => {
+            const q = currentState.searchBar.q.toLowerCase();
+            console.log('currentState q=' + q);
+            console.log('previousState q=' + this.state.searchBar.q.toLowerCase());
+
             pipelines = data.pipelines.filter((pipeline) => {
-                const q = this.state.searchBar.q.toLowerCase();
                 let isValid = false;
                 if (q === '') {
                     isValid = true;
@@ -139,8 +151,8 @@ class Home extends Component {
                     isValid = true;
                 }
                 let missingTag = false;
-                if (state.searchBar.tags) {
-                    missingTag = state.searchBar.tags.some(tag => {
+                if (currentState.searchBar.tags) {
+                    missingTag = currentState.searchBar.tags.some(tag => {
                         if (tag.checked && (!pipeline.tags || !pipeline.tags.includes(tag.name))) {
                             return true;
                         }
@@ -156,7 +168,7 @@ class Home extends Component {
             });
             // simulate aync
             setTimeout(() => {
-                this.setState({pipelines: pipelines, completed: state.completed + 20});
+                this.setState({pipelines: pipelines, completed: currentState.completed + 20});
             }, 0);
         });
     }
