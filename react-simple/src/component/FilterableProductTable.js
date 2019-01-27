@@ -167,5 +167,5 @@ const PRODUCTS = [
 
 ReactDOM.render(
   <FilterableProductTable products={PRODUCTS} />,
-  document.getElementById('root')
+  document.getElementById('FilterableProductTable')
 );

@@ -1,17 +1,22 @@
-### create
+# react
+
+## create
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-Below you will find some information on how to perform common tasks.<br>
-You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
+        npx create-react-app my-app
+        cd my-app
+        npm start
 
-### setup
+## setup
+
 - immutability-helper
 
     `npm install immutability-helper --save`
 - react bootstrap
 
     `npm install --save react-bootstrap bootstrap@3`
-    
+
     `import 'bootstrap/dist/css/bootstrap.css';` in index.js
 - material ui next
 
@@ -19,7 +24,7 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - Roboto Font
 
     `npm install typeface-roboto --save`
-    
+
     `import 'typeface-roboto';` in index.js
 - Font Icons
 
@@ -34,20 +39,23 @@ You can find the most recent version of this guide [here](https://github.com/fac
 
     `createMuiTheme` in index.js
 
-### run
+## run
+
 - npm install
 - npm start
 - npm run build
 - serve -s build
 - react developer tools - chrome
 
-### target
+## target
+
 - open
 - responsive but not mobile native
 - microservice
 - devops
 
-### resource
+## resource
+
 - https://reactjs.org/docs/hello-world.html
 - https://reacttraining.com/react-router/
 - https://material-ui-next.com/

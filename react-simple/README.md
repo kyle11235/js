@@ -12,9 +12,15 @@
 
 - start watcher
 
-        npx babel --watch src --out-dir . --presets react-app/prod 
+        npm start (add 'npx babel --watch src --out-dir . --presets react-app/prod' into package.json as npm start)
 
-  watcher preprocesses src/xxx.js suitable for browser into root folder
-  
-  more details for babel - https://babeljs.io/docs/en/babel-cli/
+do not wait for watcher to finish, it's watching changes
 
+watcher preprocesses src/xxx.js suitable for browser into root folder
+
+more details for babel - https://babeljs.io/docs/en/babel-cli/
+
+- visit
+
+        open index.html in browser directly
+        or 'serve' and visit http://localhost:5000
