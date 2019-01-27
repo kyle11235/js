@@ -22,5 +22,4 @@ more details for babel - https://babeljs.io/docs/en/babel-cli/
 
 - visit
 
-        open index.html in browser directly
-        or 'serve' and visit http://localhost:5000
+        serve and visit http://localhost:5000
