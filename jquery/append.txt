@@ -1,0 +1,5 @@
+var head = document.getElementsByTagName('head').item(0); 
+var myScript= document.createElement("script"); 
+myScript.type = "text/javascript"; 
+myScript.src="http://code.jquery.com/jquery-1.10.1.min.js"; 
+head.appendChild( myScript); 

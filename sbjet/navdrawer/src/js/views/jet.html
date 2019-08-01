@@ -1,0 +1,107 @@
+<!--
+ Copyright (c) 2014, 2017, Oracle and/or its affiliates.
+ The Universal Permissive License (UPL), Version 1.0
+ -->
+<div class="oj-hybrid-padding jet">
+  <h1>jet</h1>
+  <div>
+
+
+      <h2 class="header">data grid</h2>
+      <oj-data-grid id="datagrid"
+                    style="width:100%;max-width:234px;height:130px"
+                    aria-label="Data Grid Cell Based Grid Demo"
+                    data="[[dataSource]]">
+      </oj-data-grid>
+
+
+
+      <h2 class="header">list</h2>
+      <oj-list-view id="listview" aria-label="list with static data" selection-mode="multiple">
+          <ul>
+              <li id="amybartlet">
+                  <span class="avatar" style="background-image: url('images/person/14.png')"></span>
+                  <div class="container">
+                      <div>
+                          <span class="name">Amy Bartlet</span>
+                      </div>
+                      <div>
+                          <span class="oj-text-xs oj-text-secondary-color">Vice President</span>
+                      </div>
+                  </div>
+              </li>
+              <li id="andyjones">
+                  <span class="avatar" style="background-image: url('images/person/14.png')"></span>
+                  <div class="container">
+                      <div>
+                          <span class="name">Andy Jones</span>
+                      </div>
+                      <div>
+                          <span class="oj-text-xs oj-text-secondary-color">Director</span>
+                      </div>
+                  </div>
+              </li>
+              <li id="andrewbugsy">
+                  <span class="avatar" style="background-image: url('images/person/14.png')"></span>
+                  <div class="container">
+                      <div>
+                          <span class="name">Andrew Bugsy</span>
+                      </div>
+                      <div>
+                          <span class="oj-text-xs oj-text-secondary-color">Individual Contributer</span>
+                      </div>
+                  </div>
+              </li>
+          </ul>
+      </oj-list-view>
+
+
+
+      <h2 class="header">button</h2>
+      <oj-button id='button1' on-click='[[buttonClick]]'>Button 1</oj-button>
+      <p id="last" class="bold">ID of last button to be clicked:
+          <span id="results" data-bind='text: clickedButton'></span>
+      </p>
+
+
+
+      <h2 class="header">select</h2>
+      <oj-label for="basicSelect">Select One</oj-label>
+      <oj-select-one id="basicSelect" value="{{val}}" style="max-width:20em">
+          <oj-option value="IE">Internet Explorer</oj-option>
+          <oj-option value="FF">Firefox</oj-option>
+          <oj-option value="CH">Chrome</oj-option>
+          <oj-option value="OP">Opera</oj-option>
+          <oj-option value="SA">Safari</oj-option>
+      </oj-select-one>
+
+
+
+      <h2 class="header">select</h2>
+      <div id="moduleDemo">
+          <oj-buttonset-one class="oj-buttonset-width-auto" value="{{currentModule}}">
+              <oj-option id="sv1" value="first">View One</oj-option>
+              <oj-option id="sv2" value="second">View Two</oj-option>
+              <oj-option id="sv3" value="third">View Three</oj-option>
+          </oj-buttonset-one>
+
+          <p>
+              The inserted module is below
+          </p>
+
+          <div data-bind="ojModule: modulePath" style="background-color:aliceblue">
+          </div>
+      </div>
+
+
+
+      <h2 class="header">composite</h2>
+      <div class="composite-container" class="oj-flex oj-sm-flex-items-initial">
+          <!-- ko foreach: employees -->
+          <demo-card class="oj-flex-item" name="[[name]]" avatar="[[avatar]]" work-title="[[title]]"
+                     work-number="[[work]]" email="[[email]]">
+          </demo-card>
+          <!-- /ko -->
+      </div>
+  </div>
+</div>

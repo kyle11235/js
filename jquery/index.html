@@ -1,0 +1,38 @@
+
+<script src="./jquery.js">
+</script>
+
+
+<body>
+    <div id="result"></div>
+</body>
+
+<script>
+
+    const baseUrl = 'https://api.github.com/users/kyle11235/repos';
+
+    // get
+    $.get(baseUrl, function(result){
+            $("#result").html(JSON.stringify(result));
+    });
+
+
+    // get/post
+    foo = function (callback) {
+        let data = {};
+        $.ajax({
+            type: "POST",
+            url: baseUrl,
+            data: JSON.stringify(data),
+            contentType: "application/json",
+            dataType:'json',
+            success: function (data) {
+                callback(data);
+            }
+        });
+    }
+
+</script>
+        
+
+   

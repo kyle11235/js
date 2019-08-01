@@ -1,0 +1,108 @@
+<!--
+ Copyright (c) 2014, 2017, Oracle and/or its affiliates.
+ The Universal Permissive License (UPL), Version 1.0
+ -->
+<div class="">
+	<!-- tool bar -->
+	<div class="tool_bar">
+		<div class="oj-flex-bar">
+            <div class="oj-flex-bar-start">
+				<oj-toolbar>
+			        <oj-button data-bind="click: function(){history.back();}"> 
+						<span slot='startIcon' class='oj-fwk-icon-caret-start oj-fwk-icon'></span> 
+					</oj-button>
+				</oj-toolbar>
+			</div>
+            <div class="oj-flex-bar-center-absolute">
+				<h3>Mail List</h3>
+			</div>
+            <div class="oj-flex-bar-end">
+	            <oj-toolbar>
+					<oj-menu-button id="menuButton">
+			             <oj-menu slot="menu" style="display:none">
+			               <oj-option  value="share">
+			                 <span slot="startIcon"><i class="fa fa-share-alt" aria-hidden="true"></i></span>Share
+			               </oj-option>
+			               <oj-option value="like">
+			                 <span slot="startIcon"><i class="fa fa-heart" aria-hidden="true"></i></span>Like
+			               </oj-option>
+			               <oj-option value="bug">
+			                 <span slot="startIcon"><i class="fa fa-bug" aria-hidden="true"></i></span>Bug
+			               </oj-option>
+			             </oj-menu>
+			        </oj-menu-button>
+		        </oj-toolbar>
+			</div>
+          </div>
+	</div>
+	
+	<div style="margin-top:10px;">
+		<p>You can find the mail list for all products here!</p>
+	   <oj-collapsible>
+            <span slot="header"><span>JCS</span></span>
+            <p class="oj-p">
+            	xxxxxx@oracle.com<br>
+            	xxxxxx@oracle.com<br>
+            </p>
+       </oj-collapsible>
+	   <oj-collapsible>
+            <span slot="header"><span>DevCS</span></span>
+            <p class="oj-p">
+            	xxxxxx@oracle.com<br>
+            	xxxxxx@oracle.com<br>
+            </p>
+       </oj-collapsible>
+	   <oj-collapsible>
+            <span slot="header"><span>Container</span></span>
+            <p class="oj-p">
+            	xxxxxx@oracle.com<br>
+            	xxxxxx@oracle.com<br>
+            </p>
+       </oj-collapsible>
+	   <oj-collapsible>
+            <span slot="header"><span>DBCS</span></span>
+            <p class="oj-p">
+            	xxxxxx@oracle.com<br>
+            	xxxxxx@oracle.com<br>
+            </p>
+       </oj-collapsible>
+	   <oj-collapsible>
+            <span slot="header"><span>MCS</span></span>
+            <p class="oj-p">
+            	xxxxxx@oracle.com<br>
+            	xxxxxx@oracle.com<br>
+            </p>
+       </oj-collapsible>
+	   <oj-collapsible>
+            <span slot="header"><span>Iot</span></span>
+            <p class="oj-p">
+            	xxxxxx@oracle.com<br>
+            	xxxxxx@oracle.com<br>
+            </p>
+       </oj-collapsible>
+	   <oj-collapsible>
+            <span slot="header"><span>HCM</span></span>
+            <p class="oj-p">
+            	xxxxxx@oracle.com<br>
+            	xxxxxx@oracle.com<br>
+            </p>
+       </oj-collapsible>
+	   <oj-collapsible>
+            <span slot="header"><span>CX</span></span>
+            <p class="oj-p">
+            	xxxxxx@oracle.com<br>
+            	xxxxxx@oracle.com<br>
+            </p>
+       </oj-collapsible>
+	   <oj-collapsible>
+            <span slot="header"><span>ERP</span></span>
+            <p class="oj-p">
+            	xxxxxx@oracle.com<br>
+            	xxxxxx@oracle.com<br>
+            </p>
+       </oj-collapsible>
+       
+       <oj-button>I can't find what I need</oj-button>
+       
+	</div>
+</div>
