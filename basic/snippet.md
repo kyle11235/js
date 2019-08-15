@@ -61,3 +61,8 @@
             return v.toString(16);
           });
         });
+
+
+- replace
+
+        str = str.replace(new RegExp('http://localhost:8080/wx/', 'g'), 'http://x.x.x.x:8080/wx/');
