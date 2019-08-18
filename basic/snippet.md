@@ -5,7 +5,7 @@
 
         - java
 
-                // 1. new LocalDateTime() = A date-time without a time-zone in the ISO-8601 calendar system, e.g. 2007-12-03T10:15:30
+                // 1. new LocalDateTime() = local date(depends on server timezone) without timezone e.g. 2007-12-03T10:15:30
 
                 Integer timeDifference = 8;
                 DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyyMMdd");
@@ -31,10 +31,12 @@
                 // 2019-8-15 11:00:00
 
 
-                // 2. ISO string, new Date() = local date
+                // 2. ISO string, new Date() = local date without timezone
 
                 dateString = "2019-08-15T03:00:00.000Z";
                 date = new Date(dateString); 
+                date = new Date(dateString.replace(/-/g, '/'));
+
 
                 dateString = date.getFullYear() + "-" + ("0" + (date.getMonth()+1)).slice(-2) + "-" + ("0" + date.getDate()).slice(-2) + " " +
                 ("0" + date.getHours()).slice(-2) + ":" + ("0" + date.getMinutes()).slice(-2) + ":" + ("0" + date.getSeconds()).slice(-2);
