@@ -5,7 +5,7 @@
 
         - java
 
-                // 1. new LocalDateTime() = local date(depends on server timezone) without timezone e.g. 2007-12-03T10:15:30
+                // 1. new LocalDateTime() = local date(depends on server timezone) without timezone e.g. 2007-12-03T10:15:30 or 2007-12-03 10:15:30 (T is ignored)
 
                 Integer timeDifference = 8;
                 DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyyMMdd");
@@ -14,34 +14,33 @@
 
         - js
 
-                // 1. new Date() = UTC+0
-
                 Date.prototype.addHours = function(h) {
                   this.setTime(this.getTime() + (h*60*60*1000));
                   return this;
                 }
+                
+                Date.prototype.toStr = function() {
+                    // yyyy-MM-dd hh:mm:ss
+                    return this.getFullYear() + "-" + ("0" + (this.getMonth()+1)).slice(-2) + "-" + ("0" + this.getDate()).slice(-2) + " " + ("0" + this.getHours()).slice(-2) + ":" + ("0" + this.getMinutes()).slice(-2) + ":" + ("0" + this.getSeconds()).slice(-2);
+                }
+
+                // 1. new Date(...) = UTC+0
 
                 dateString = "2019-08-15 03:00:00";
-                date = new Date(dateString).addHours(8);
+                date = new Date(dateString.replace(/-/g, '/')); // for mobile
+                date = date.addHours(8);
 
-                dateString = date.getFullYear() + "-" + ("0" + (date.getMonth()+1)).slice(-2) + "-" + ("0" + date.getDate()).slice(-2) + " " +
-                ("0" + date.getHours()).slice(-2) + ":" + ("0" + date.getMinutes()).slice(-2) + ":" + ("0" + date.getSeconds()).slice(-2);
-
-                console.log(dateString);
+                console.log(date.toStr());
                 // 2019-8-15 11:00:00
 
 
-                // 2. ISO string, new Date() = local date without timezone
+                // 2. ISO string, new Date(...) = local date
 
-                dateString = "2019-08-15T03:00:00.000Z";
-                date = new Date(dateString); 
-                date = new Date(dateString.replace(/-/g, '/'));
+                dateString = "2019-08-15T03:00:00.000Z";  // Z means zero timezone
+                date = new Date(dateString.replace(/-/g, '/')); // for mobile
+                // no addHours here
 
-
-                dateString = date.getFullYear() + "-" + ("0" + (date.getMonth()+1)).slice(-2) + "-" + ("0" + date.getDate()).slice(-2) + " " +
-                ("0" + date.getHours()).slice(-2) + ":" + ("0" + date.getMinutes()).slice(-2) + ":" + ("0" + date.getSeconds()).slice(-2);
-
-                console.log(dateString);
+                console.log(date.toStr());
                 // 2019-8-15 11:00:00
 
 
