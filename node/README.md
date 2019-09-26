@@ -2,20 +2,33 @@
 
 https://nodejs.org/en/docs/guides/dont-block-the-event-loop/
 
-## debug
+- install
 
-- inspect
+        - linux
+        cd /u02/app/
+        wget https://nodejs.org/download/release/v6.9.5/node-v6.9.5-linux-x64.tar.gz
+        tar -xzvf xxx.gz
+        mv xxx node
+        sudo vi /etc/profile
+        export NODE_PATH=/u02/app/node
+        export PATH=$PATH:$NODE_PATH/bin
+        source /etc/profile
+        npm install npm@3.10.10 -g
 
+- create
+
+        - npm init
+        - manually create main js according to package.json
+        - npm install xx -save to add to package.json
+
+- debug
+
+        - inspect
         node --inspect server.js
         http://127.0.0.1:9229/json/list
         chrome-devtools://devtools/bundled/inspector.htmlxxxxxxxxxxx
         source -> breakpoint
 
-- node-debug
-
+        - node-debug
         npm install -g node-debug
         node-debug path/to/your/script.js
-
-## npm
-
-        mac global module path -> /usr/local/lib/node_modules
