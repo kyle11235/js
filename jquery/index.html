@@ -27,6 +27,7 @@
             contentType: "application/json",
             dataType:'json',
             success: function (data) {
+                // success if response type is json cause dataType='json'
                 callback(data);
             }
         });
