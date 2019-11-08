@@ -1,10 +1,11 @@
+var request = require('request');
 
 var translate = function (text, translateCallback){
 	var tokenCallback = function(error, body){
 		if (error) {
-			
+			translateCallback(error);
 		}else{
-			request.get(xxx, function (error, response, body) {
+			request.get('https://github.com/kyle11235', function (error, response, body) {
 				if(!error){
 					translateCallback(null, body);
 				}else{
@@ -14,10 +15,10 @@ var translate = function (text, translateCallback){
 		}
 	}
 	// you need to provide callback
-	getToken(successToken, tokenCallback);
+	getToken(tokenCallback);
 }
-var getToken = function (successToken, tokenCallback){
-	request.get(xxx, function (error, response, body) {
+var getToken = function (tokenCallback){
+	request.get('https://github.com/kyle11235', function (error, response, body) {
 		if(!error){
 			tokenCallback(null, body);
 		}else{
@@ -26,14 +27,12 @@ var getToken = function (successToken, tokenCallback){
 	});
 }
 
-
-
 var translateCallback = function(error, body){
 	if (error) {
-		
+		console.log(error);
 	}else{
-		
+		console.log('ok');
 	}
 }
 // you need to provide callback
-this.translate('hello world', translateCallback);
+translate('hello world', translateCallback);
