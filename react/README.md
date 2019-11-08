@@ -1,66 +1,25 @@
-# react
 
-## create
+# use JSX
 
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+- install nodejs
 
-        npx create-react-app my-app
-        cd my-app
-        npm start
+- install JSX preprocessor
 
-## setup
+        mkdir simple && cd simple
+        npm init -y
+        npm install babel-cli@6 babel-preset-react-app@3
+        mkdir src
 
-- immutability-helper
+- start watcher
 
-    `npm install immutability-helper --save`
-- react bootstrap
+        npm start (add 'npx babel --watch src --out-dir . --presets react-app/prod' into package.json as npm start)
 
-    `npm install --save react-bootstrap bootstrap@3`
+do not wait for watcher to finish, it's watching changes
 
-    `import 'bootstrap/dist/css/bootstrap.css';` in index.js
-- material ui next
+watcher preprocesses src/xxx.js suitable for browser into root folder
 
-    `npm install material-ui@next --save`
-- Roboto Font
+more details for babel - https://babeljs.io/docs/en/babel-cli/
 
-    `npm install typeface-roboto --save`
+- visit
 
-    `import 'typeface-roboto';` in index.js
-- Font Icons
-
-    `<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">` in index.html
-- SVG Icons
-
-    `npm install material-ui-icons --save`
-- normalization
-
-    `import CssBaseline from 'material-ui/CssBaseline';` in index.js
-- define theme
-
-    `createMuiTheme` in index.js
-
-## run
-
-- npm install
-- npm start
-- npm run build
-- serve -s build
-- react developer tools - chrome
-
-## target
-
-- open
-- responsive but not mobile native
-- microservice
-- devops
-
-## resource
-
-- https://reactjs.org/docs/hello-world.html
-- https://reacttraining.com/react-router/
-- https://material-ui-next.com/
-- https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
-- https://reactjs.org/docs/faq-ajax.html
-- https://github.com/storybooks/storybook
-- https://developer.mozilla.org/zh-CN/docs/Web/JavaScript
-- https://reactjs.org/docs/update.html
+        serve and visit http://localhost:5000
