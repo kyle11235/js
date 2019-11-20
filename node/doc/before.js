@@ -1,38 +1,33 @@
-var request = require('request');
+const request = require('request');
 
 var translate = function (text, translateCallback){
-	var tokenCallback = function(error, body){
-		if (error) {
-			translateCallback(error);
-		}else{
+	// get token
+	request.get('https://github.com/kyle11235', function (error, response, body) {
+		if(!error){
+			console.log('token=tokenxxx');
+			// get translated text
 			request.get('https://github.com/kyle11235', function (error, response, body) {
 				if(!error){
-					translateCallback(null, body);
+					// callback
+					translateCallback(null, 'translated hello world');
 				}else{
 					translateCallback(error);
 				}
 			});
-		}
-	}
-	// you need to provide callback
-	getToken(tokenCallback);
-}
-var getToken = function (tokenCallback){
-	request.get('https://github.com/kyle11235', function (error, response, body) {
-		if(!error){
-			tokenCallback(null, body);
 		}else{
-			tokenCallback(error);
+			translateCallback(error);
 		}
-	});
+	});	
 }
 
-var translateCallback = function(error, body){
+translate('hello world', function(error, translatedText){
 	if (error) {
 		console.log(error);
 	}else{
-		console.log('ok');
+		console.log('translatedText=' + translatedText);
 	}
-}
-// you need to provide callback
-translate('hello world', translateCallback);
+});
+
+// nested callback
+// npm install request
+// node before.js
