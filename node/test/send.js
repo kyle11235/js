@@ -3,11 +3,10 @@ const request = require('request');
 const headers = {};
 headers['Content-Type'] = 'application/json; charset=utf-8';
 
-const body = {
-    name: "kyle.z.zhang1",
-    password: "111"
-};
 
+json = {
+    "name": "kyle"
+}
 
 /*
 json: true does these:
@@ -15,10 +14,10 @@ json: true does these:
 2. accept: application/json, JSON.parse(resBody)
 */
 const options = {
-    url: 'http://localhost:3000/user/',
+    url: 'http://localhost:3000/api/post',
     json: true,
     headers: headers,
-    body: body
+    body: json
 };
 
 request.post(options, function (error, response, body) {
@@ -33,5 +32,14 @@ request.post(options, function (error, response, body) {
     console.log(JSON.stringify(error));
 });
 
-// curl -H "Content-type:application/json" -X POST http://localhost:3000 -d '{"name":"kyle", "age":"3"}'
+// npm install request
 
+// json
+// node send.js
+
+// form data
+// curl -X POST http://localhost:3000/key -d 'code=3'
+
+// json
+// curl http://localhost:3000/api/get
+// curl -H "Content-type:application/json" -X POST http://localhost:3000/api/post -d "{\"name\":\"kyle\"}"
