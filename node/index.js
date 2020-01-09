@@ -36,7 +36,7 @@ if (cluster.isMaster) {
           status:'success'
         });
     });
-    app.use('/user', user);
+    app.use('/api/user', user);
 
     // catch 404 and forward to error handler
     app.use(function (req, res, next) {
