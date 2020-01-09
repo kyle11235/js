@@ -1,1 +1,0 @@
-sudo docker run --name mysql -d -p 3306:3306 -v /u02/app/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=pipelineHub -e MYSQL_DATABASE=pipelineHub mysql --character-set-server=utf8 --collation-server=utf8_general_ci

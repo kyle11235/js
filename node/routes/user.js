@@ -6,24 +6,21 @@ const userService = require('../service/UserService');
 
 // put login before update, the router order matters
 router.post('/login', function (req, res) {
-    const user = {
-        name: req.body.name,
-        password: req.body.password
-    };
-    userService.queryByName(user.name).then(result => {
-        if (result && result.password === user.password) {
-            res.json({status: 0, message: 'success'});
+    const user = req.body;
+    userService.getByName(user.name).then(result => {
+        if (result && result.data.password === user.password) {
+            res.json({status: 'success', message: 'success'});
             return;
         }
-        res.json({status: 1, message: 'invalid name or password'});
+        res.json(result);
     }).catch(error => {
         res.json(error);
     });
 });
 
-// queryAll
-router.get('/', function (req, res) {
-    userService.queryAll().then(result => {
+// getAll
+router.get('/list', function (req, res) {
+    userService.getList().then(result => {
         res.json(result);
         // if you have more than one res.json, use return to prevent program from going down
         return;
@@ -32,23 +29,28 @@ router.get('/', function (req, res) {
     });
 });
 
-// insert
-router.put('/', function (req, res) {
-    const user = {
-        name: req.body.name,
-        password: req.body.password,
-        create_date: moment(new Date()).format('YYYY-MM-DD HH:mm:ss')
-    };
-    userService.insert(user).then(result => {
+// create
+router.post('/create', function (req, res) {
+    
+    // insert from mysql workbench / new Date() by program -> UTC+0 without timezone stored on server
+    // display proper time format based on your device time zone
+    let now = new Date();
+    let user = req.body;
+    console.log('user=',user);
+    user.add_time = now;
+    user.update_time = now;
+   
+    userService.create(user).then(result => {
         res.json(result);
     }).catch(error => {
         res.json(error);
     });
 });
 
-// queryByName
-router.get('/:name', function (req, res) {
-    userService.queryByName(req.params.name).then(result => {
+// read
+router.get('/read', function (req, res) {
+    console.log('id=' + req.param('id'));
+    userService.getByID(req.param('id')).then(result => {
         res.json(result);
     }).catch(error => {
         res.json(error);
@@ -56,11 +58,9 @@ router.get('/:name', function (req, res) {
 });
 
 // update
-router.post('/:name', function (req, res) {
-    const user = {
-        name: req.params.name,
-        password: req.body.password
-    };
+router.post('/update', function (req, res) {
+    let user = req.body.user;
+    user.update_time = new Date();
     userService.update(user).then(result => {
         res.json(result);
     }).catch(error => {
@@ -68,9 +68,13 @@ router.post('/:name', function (req, res) {
     });
 });
 
-// close this endpoint
-router.delete('/:name', function (req, res) {
-    res.json({status: 1, message: 'endpoint is closed'});
+// delete
+router.delete('/delete', function (req, res) {
+    userService.delete(req.param('id')).then(result => {
+        res.json(result);
+    }).catch(error => {
+        res.json(error);
+    });
 });
 
 

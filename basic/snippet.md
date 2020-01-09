@@ -5,14 +5,21 @@
 
         - java
 
-                // 1. new LocalDateTime() = local date(depends on server timezone) without timezone e.g. 2007-12-03T10:15:30 or 2007-12-03 10:15:30 (T is ignored)
+                new Date() is local(where it's created) time since 1970, no timezone stored
+                toString use on the fly timeone you call toString
 
-                Integer timeDifference = 8;
+                java8, new LocalDateTime() = local date / clock you see on the wall (depends on server timezone) 
+                but no timezone stored e.g. 2007-12-03T10:15:30 or 2007-12-03 10:15:30 (T is ignored)
+
+                if it's created at server side and server timezone is 0
+                for client side, Integer timeDifference = 8;
                 DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyyMMdd");
                 String now = df.format(LocalDateTime.now().plusHours(timeDifference));
 
-
         - js
+
+                new Date() is local(where it's created) time, no time zone stored
+                toString use on the fly timeone you call toString
 
                 Date.prototype.addHours = function(h) {
                   this.setTime(this.getTime() + (h*60*60*1000));
@@ -24,7 +31,7 @@
                     return this.getFullYear() + "-" + ("0" + (this.getMonth()+1)).slice(-2) + "-" + ("0" + this.getDate()).slice(-2) + " " + ("0" + this.getHours()).slice(-2) + ":" + ("0" + this.getMinutes()).slice(-2) + ":" + ("0" + this.getSeconds()).slice(-2);
                 }
 
-                // 1. new Date(...) = UTC+0
+                // 1. plain string -> below new Date(...) = UTC+0
 
                 dateString = "2019-08-15 03:00:00";
                 date = new Date(dateString.replace(/-/g, '/')); // for mobile
@@ -34,7 +41,7 @@
                 // 2019-8-15 11:00:00
 
 
-                // 2. ISO string, new Date(...) = local date
+                // 2. ISO string -> below new Date(...) = UTC+x
 
                 dateString = "2019-08-15T03:00:00.000Z";  // Z means zero timezone
                 date = new Date(dateString.replace(/-/g, '/')); // for mobile

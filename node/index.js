@@ -8,15 +8,16 @@ const cors = require('cors');
 const user = require('./routes/user');
 
 if (cluster.isMaster) {
-  console.log(`Master ${process.pid} is running`);
+  console.log(`Master pid=${process.pid} is running`);
 
   // Fork workers.
-  for (let i = 0; i < numCPUs; i++) {
-    cluster.fork();
-  }
+  // for (let i = 0; i < numCPUs; i++) {
+  //   cluster.fork();
+  // }
+  cluster.fork();
 
   cluster.on('exit', (worker, code, signal) => {
-    console.log(`worker ${worker.process.pid} died`);
+    console.log(`worker pid=${worker.process.pid} died`);
   });
 } else {
   // Workers can share any TCP connection
@@ -31,7 +32,9 @@ if (cluster.isMaster) {
 
     // routes
     app.get('/', function (req, res) {
-        res.send('running...');
+        res.json({
+          status:'success'
+        });
     });
     app.use('/user', user);
 
@@ -44,6 +47,8 @@ if (cluster.isMaster) {
 
     // error handler
     app.use(function (error, req, res, next) {
+        // this catch all errors
+        console.log('error=', error);
         res.status(error.status || 500);
         res.json(error);
     });
@@ -52,5 +57,5 @@ if (cluster.isMaster) {
         console.log('running at 3000...');
     });
 
-  console.log(`Worker ${process.pid} started`);
+  console.log(`Worker pid=${process.pid} started`);
 }
