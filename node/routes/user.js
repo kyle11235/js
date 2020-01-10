@@ -5,33 +5,25 @@ const userService = require('../service/UserService');
 
 
 // put login before update, the router order matters
-router.post('/login', function (req, res) {
+router.post('/login', async (req, res) => {
     const user = req.body;
-    userService.getByName(user.name).then(result => {
-        if (result && result.data.password === user.password) {
-            res.json({status: 'success', message: 'success'});
-            return;
-        }
-        res.json(result);
-    }).catch(error => {
-        res.json(error);
-    });
-});
 
-// getAll
-router.get('/list', function (req, res) {
-    userService.getList().then(result => {
-        res.json(result);
-        // if you have more than one res.json, use return to prevent program from going down
+    let result = await userService.getByName(user.name).catch((error) => { res.json(error) });
+    if (result && result.data.password === user.password) {
+        res.json({status: 'success', message: 'success'});
         return;
-    }).catch(error => {
-        res.json(error);
-    });
+    }else{
+        res.json({status: 'failed', message: 'failed'});
+        return;
+    }
 });
 
-// create
-router.post('/create', function (req, res) {
-    
+router.get('/list', async (req, res) => {
+    let result = await userService.getList().catch((error) => { res.json(error) });
+    res.json(result);
+});
+
+router.post('/create', async (req, res) => {
     // insert from mysql workbench / new Date() by program -> UTC+0 without timezone stored on server
     // display proper time format based on your device time zone
     let now = new Date();
@@ -39,42 +31,28 @@ router.post('/create', function (req, res) {
     console.log('user=',user);
     user.add_time = now;
     user.update_time = now;
-   
-    userService.create(user).then(result => {
-        res.json(result);
-    }).catch(error => {
-        res.json(error);
-    });
+    
+    let result = await userService.create(user).catch((error) => { res.json(error) });
+    res.json(result);
 });
 
-// read
-router.get('/read', function (req, res) {
+router.get('/read', async (req, res) => {
     console.log('id=' + req.param('id'));
-    userService.getByID(req.param('id')).then(result => {
-        res.json(result);
-    }).catch(error => {
-        res.json(error);
-    });
+    let result = await userService.getByID(req.param('id')).catch((error) => { res.json(error) });
+    res.json(result);
 });
 
-// update
-router.post('/update', function (req, res) {
-    let user = req.body.user;
+router.post('/update', async (req, res) => {
+    let user = req.body;
     user.update_time = new Date();
-    userService.update(user).then(result => {
-        res.json(result);
-    }).catch(error => {
-        res.json(error);
-    });
+    let result = await userService.update(user).catch((error) => { res.json(error) });
+    res.json(result);
 });
 
-// delete
-router.delete('/delete', function (req, res) {
-    userService.delete(req.param('id')).then(result => {
-        res.json(result);
-    }).catch(error => {
-        res.json(error);
-    });
+router.get('/delete', async (req, res) => {
+    console.log('id=' + req.param('id'));
+    let result = await userService.delete(req.param('id')).catch((error) => { res.json(error) });
+    res.json(result);
 });
 
 

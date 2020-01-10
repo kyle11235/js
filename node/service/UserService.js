@@ -1,14 +1,19 @@
 const Promise = require('bluebird');
 const pool = require('./Pool');
 
-exports.getList = function () {
+exports.getList = function (teamID) {
     return new Promise(function (resolve, reject) {
         pool.getConnection(function (err, connection) {     
             if (err){
                 reject({status: 'failed', message: 'error, errno is ' + err.errno});
                 return;
             }       
-            connection.query('select * from t_user', function (error, results, fields) {
+            let sql = 'select * from t_user where deleted = 0';
+            if(teamID){
+                sql = sql + ' and teamID = ' + teamID;
+            }
+            console.log('sql=' + sql);
+            connection.query(sql, function (error, results, fields) {
                 connection.release();
                 if (error) {
                     console.log(error);
@@ -17,10 +22,10 @@ exports.getList = function () {
                 }
                 resolve({
                     status: 'success', 
-                    data: results.map(user => ({
-                        id: user.id, 
-                        name: user.name
-                    }))
+                    data: results.map(e => {
+                        delete e.password;
+                        return e;
+                    })
                 });
             });
         });
