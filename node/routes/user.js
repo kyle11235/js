@@ -9,7 +9,7 @@ router.post('/login', async (req, res) => {
     const user = req.body;
 
     let result = await userService.getByName(user.name).catch((error) => { res.json(error) });
-    if (result && result.data.password === user.password) {
+    if (result && result.data && result.data.password === user.password) {
         res.json({status: 'success', message: 'success'});
         return;
     }else{
