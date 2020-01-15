@@ -20,7 +20,9 @@ router.post('/login', async (req, res) => {
 
 router.get('/list', async (req, res) => {
     let result = await userService.getList().catch((error) => { res.json({status: 'failed', message: error}) });
-    res.json({status: 'success', data: result});
+    if(result){
+        res.json({status: 'success', data: result});
+    }
 });
 
 router.post('/create', async (req, res) => {
@@ -33,26 +35,34 @@ router.post('/create', async (req, res) => {
     user.update_time = now;
     
     let result = await userService.create(user).catch((error) => { res.json({status: 'failed', message: error}) });
-    res.json({status: 'success', data: result});
+    if(result){
+        res.json({status: 'success', data: result});
+    }
 });
 
 router.get('/read', async (req, res) => {
     console.log('id=' + req.param('id'));
     let result = await userService.getByID(req.param('id')).catch((error) => { res.json({status: 'failed', message: error}) });
-    res.json({status: 'success', data: result});
+    if(result){
+        res.json({status: 'success', data: result});
+    }
 });
 
 router.post('/update', async (req, res) => {
     let user = req.body;
     user.update_time = new Date();
     let result = await userService.update(user).catch((error) => { res.json({status: 'failed', message: error}) });
-    res.json({status: 'success', data: result});
+    if(result){
+        res.json({status: 'success', data: result});
+    }
 });
 
 router.get('/delete', async (req, res) => {
     console.log('id=' + req.param('id'));
     let result = await userService.delete(req.param('id')).catch((error) => { res.json({status: 'failed', message: error}) });
-    res.json({status: 'success', data: result});
+    if(result){
+        res.json({status: 'success', data: result});
+    }
 });
 
 
