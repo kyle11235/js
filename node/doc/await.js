@@ -1,39 +1,79 @@
 const fetch = require('node-fetch');
 
+// or
+// npm install request
+// npm install request-promise-native
+// const request = require('request-promise-native');
+// let res = await request({ uri:  "https://github.com/kyle11235", json: true });
+
+// await in async, async return a promise
 var getToken = async function (){
 	console.log('getToken');
 
-	// fetch returns promise
-	let token = await fetch('https://github.com/kyle11235').catch((error) => { return error });
+	// 1. short version
+	// let res = await promisedFunction().catch((err) => { console.error(err); });
+	// if the promise is rejected, you can check res is undefined/valid or not, func in catch does not help
 
-	// async return a promise
-	return 'tokenxxx';
+	// 2. long version
+	// fetch/request does not reject, if error -> res is error
+	try {
+		// let res = await fetch('https://github.com/kyle11235');
+		let res = await fetch('xxx');
+		console.log('getToken ok');
+		return {
+			error: null,
+			token: 'tokenxxx'
+		};  
+	} catch(error) {
+		console.log('get token error=' + error);
+		return {
+			error: error,
+			token: null
+		};  
+	}
 }
 
 var translate = async function (text){
 	console.log('translate');
 
-	// no then, wait here
-	let token = await getToken().catch((error) => { return error });
-	console.log('token=' + token);
+	let res = await getToken();
+	if(res.error){
+		return {
+			error: res.error,
+			text: null
+		};  
+	}
 
-	let translatedText = await fetch('https://github.com/kyle11235').catch((error) => { return error });
-	return 'translated hello world';
+	try {
+		let res = await fetch('https://github.com/kyle11235');
+		console.log('translate ok');
+		return {
+			error: null,
+			text: 'hello'
+		};  
+	} catch(error) {
+		console.log('translate error=' + error);
+		return {
+			error: error,
+			text: null
+		};  
+	}
 }
 
 // await is only valid in async function
 async function foo(){
-	console.log('foo');
+	console.log('foo' );
 
-	let translatedText = await translate('hello world').catch((error) => { console.log(error);});
-	
-	// translatedText will be undefined if the promise is rejected
-	if(translatedText){
-		console.log('translatedText=' + translatedText);
+	let res = await translate('ni hao');
+	if(res.error){
+		console.log('foo error=' + res.error);
+		return;
 	}
+	console.log('foo ok, res=' + res.text);
 }
 
 foo();
+
 
 // npm install node-fetch
 // node await.js
