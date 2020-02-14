@@ -53,7 +53,6 @@ const timeout = 120 * 1000;
 
   // - login -> home page
   console.log('- login begin');
-  d1 = new Date();
   const txtName = await page.$('#login_field'); // page.$ -> document.querySelector('css selector'), return class: ElementHandle
   await txtName.type(name, {delay: 20});
   const txtPassword = await page.$('#password', {delay: 20});
@@ -66,6 +65,15 @@ const timeout = 120 * 1000;
       page.waitForNavigation()  
   ]);
   console.log('- login success');
+
+  
+  // - open home page
+  console.log('- open home page');
+  d1 = new Date();
+  await page.goto(homeUrl, {
+    timeout: timeout,
+    waitUntil: waitUntil
+  });
   d2 = new Date();
   console.log((d2.getTime() - d1.getTime()) / 1000);
 
