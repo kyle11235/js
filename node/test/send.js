@@ -43,3 +43,6 @@ request.post(options, function (error, response, body) {
 // json
 // curl http://localhost:3000/api/get
 // curl -H "Content-type:application/json" -X POST http://localhost:3000/api/post -d "{\"name\":\"kyle\"}"
+
+// file
+// curl -H "Content-Type:application/json" -X POST http://localhost:3000/api/post -d @test.json
