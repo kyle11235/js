@@ -80,12 +80,3 @@ test result
 {"login_time":34.649,"login_time_refresh":2.34,"home_time":2.837,"home_time_refresh":0,"report_time":0,"report_time_refresh":0,"name":"kyle.z.zhang@oracle.com","location":"shenzhen"}
 api success
 
---- run cron job ---
-
-- open login page
-22.125
-- refresh login page
-2.57
-- login begin
-- login success
-- open home page
