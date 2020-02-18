@@ -1,0 +1,21 @@
+{
+    "name" : "kyle",
+    "password" : "xxx",
+    "location" : "xxx",
+    "apiUrl" : "http://localhost:3000",
+
+    "enableCron" : true,
+    "enableCron_desc" : "if enableCron=false, just run for 1 time",
+    "cron" : "*/3 * * * *",
+    "cron_example0" : "every 10 seconds = */10 * * * * *",
+    "cron_example1" : "every 10 minutes =   */10 * * * *",
+    "cron_example2" : "every 10 hours   =   */10 * * * *",
+
+    "homeUrl" : "https://testseoul-xxx-ic.analytics.ocp.oraclecloud.com/ui/dv/?pageid=home",
+    "reportUrl" : "https://testseoul-xxx-ic.analytics.ocp.oraclecloud.com/ui/dv/ui/project.jsp?pageid=visualAnalyzer&reportmode=full&reportpath=%2F%40Catalog%2Fshared%2F%E7%BD%91%E9%80%9F%E6%B5%8B%E8%AF%95%2FFinancial%20-%20Banking%20Reusable%20Demo",
+    "openPageTimeout" : 3600,
+    "openPageTimeout_desc" : "3600 seconds = 1 hour",
+    "openBrowser" : true,
+    "openBrowser_desc" : "open browser for you to monitor"
+   
+}
