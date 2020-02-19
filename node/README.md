@@ -8,13 +8,20 @@ https://nodejs.org/en/docs/guides/dont-block-the-event-loop/
         cd /u02/app/
         wget https://nodejs.org/download/release/v6.9.5/node-v6.9.5-linux-x64.tar.gz
         wget https://nodejs.org/download/release/v10.16.3/node-v10.16.3-linux-x64.tar.gz
-        tar -xzvf xxx.gz
+        tar -zxf xxx.gz
+
+        wget https://nodejs.org/dist/v12.13.1/node-v12.13.1-linux-x64.tar.xz
+        tar -xf node-v12.13.1-linux-x64.tar.xz
+
         mv xxx node
         sudo vi /etc/profile
         export NODE_PATH=/u02/app/node
         export PATH=$PATH:$NODE_PATH/bin
         source /etc/profile
         if install new npm, e.g. npm install npm@3.10.10 -g
+        
+        - mac installer
+        - win installer
 
 - create
 
