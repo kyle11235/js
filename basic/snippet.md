@@ -13,8 +13,23 @@
 
                 if it's created at server side and server timezone is 0
                 for client side, Integer timeDifference = 8;
-                DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyyMMdd");
-                String now = df.format(LocalDateTime.now().plusHours(timeDifference));
+                
+                - toString
+                public static String toStringLong(LocalDateTime dateTime) {
+                    DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                    return df.format(dateTime);
+                }
+
+                public static String toStringShort(LocalDateTime dateTime) {
+                    DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                    return df.format(dateTime);
+                }
+                
+                - parse
+                public static LocalDateTime parseShort(String dateString) {
+                    DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                    return = LocalDateTime.parse(dateString, df);
+                }
 
         - js
 
@@ -26,24 +41,30 @@
                   return this;
                 }
 
-                Date.prototype.toStr = function() {
-                    // yyyy-MM-dd hh:mm:ss
-                    return this.getFullYear() + "-" + ("0" + (this.getMonth()+1)).slice(-2) + "-" + ("0" + this.getDate()).slice(-2) + " " + ("0" + this.getHours()).slice(-2) + ":" + ("0" + this.getMinutes()).slice(-2) + ":" + ("0" + this.getSeconds()).slice(-2);
+                - toString
+                Date.prototype.toStringLong = function () {
+                  // yyyy-MM-dd hh:mm:ss
+                  return this.getFullYear() + "-" + ("0" + (this.getMonth() + 1)).slice(-2) + "-" + ("0" + this.getDate()).slice(-2) + " " + ("0" + this.getHours()).slice(-2) + ":" + ("0" + this.getMinutes()).slice(-2) + ":" + ("0" + this.getSeconds()).slice(-2);
                 }
 
-                // 1. plain string -> below new Date(...) = UTC+0
+                Date.prototype.toStringShort = function () {
+                  // yyyy-MM-dd
+                  return this.getFullYear() + "-" + ("0" + (this.getMonth() + 1)).slice(-2) + "-" + ("0" + this.getDate()).slice(-2);
+                }
+                
+                - parse plain string -> below new Date(...) = UTC+0
+                let dateString = "2019-08-15 03:00:00";
+                let addTimeLong = new Date(Date.parse(dateString)).addHours(8).toStringLong();
 
-                dateString = "2019-08-15 03:00:00";
+                - parse plain string -> below new Date(...) = UTC+0
                 date = new Date(dateString.replace(/-/g, '/')); // for mobile
                 date = date.addHours(8);
 
-                console.log(date.toStr());
+                console.log(date.toStringLong());
                 // 2019-8-15 11:00:00
 
-
-                // 2. ISO string -> below new Date(...) = UTC+x
-
-                dateString = "2019-08-15T03:00:00.000Z";  // Z means zero timezone
+                - parse ISO string -> below new Date(...) = UTC+x
+                let dateString = "2019-08-15T03:00:00.000Z";  // Z means zero timezone
                 date = new Date(dateString.replace(/-/g, '/')); // for mobile
                 // no addHours here
 
