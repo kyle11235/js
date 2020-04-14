@@ -54,7 +54,7 @@
                 
                 - parse plain string -> below new Date(...) = UTC+0
                 let dateString = "2019-08-15 03:00:00";
-                let addTimeLong = new Date(Date.parse(dateString)).addHours(8).toStringLong();
+                let addTimeLong = new Date(dateString.replace(/-/g, '/')).addHours(8).toStringLong(); // for mobile
 
                 - parse plain string -> below new Date(...) = UTC+0
                 date = new Date(dateString.replace(/-/g, '/')); // for mobile
