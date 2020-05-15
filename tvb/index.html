@@ -8,14 +8,18 @@
 
   <body>
     
-    <div>
-        name:<input t-bind="name" type="text">
-        age:<input t-bind="age" type="text">
-    </div> 
-    <div>
-        name:<input t-bind="name" type="text">
-        age:<input t-bind="age" type="text">
-    </div> 
+    <viv id="app">
+      <div>
+          name:<input t-value="name" type="text">
+          age:<input t-value="age" type="text">
+          <input type="button" t-click="fnClick" value="+ age"/>
+      </div> 
+      <div>
+          name:<input t-value="name" type="text">
+          age:<input t-value="age" type="text">
+          <input type="button" t-click="this.age = 0" value="clear age"/>
+      </div> 
+    </viv>
 
     <script src="./tvb.js"></script>
 
